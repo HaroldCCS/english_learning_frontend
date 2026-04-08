@@ -10,7 +10,7 @@ export async function getTranslationSuggestions(q, { from = 'en', to = 'es', sig
   })
 
   if (!res.ok) {
-    throw new Error(`Translate HTTP ${res.status}`)
+    throw new Error(`Error de traducción HTTP ${res.status}`)
   }
 
   const data = await res.json().catch(() => null)

@@ -37,12 +37,20 @@ export async function me(token) {
   return request('/api/me', { token })
 }
 
-export async function quickAddVocab(token, { english, spanish, category }) {
-  return request('/api/vocab', { method: 'POST', token, body: { english, spanish, category } })
+export async function quickAddVocab(token, { english, spanish, description, category }) {
+  return request('/api/vocab', { method: 'POST', token, body: { english, spanish, description, category } })
 }
 
 export async function recentVocab(token) {
   return request('/api/vocab/recent', { token })
+}
+
+export async function updateVocab(token, id, { english, spanish, description, category, active }) {
+  return request(`/api/vocab/${id}`, {
+    method: 'PUT',
+    token,
+    body: { english, spanish, description, category, active },
+  })
 }
 
 export async function practiceNext(token, { mode, direction }) {
